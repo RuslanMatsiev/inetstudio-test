@@ -1,17 +1,44 @@
 <?php
 
-class SomeObject {
-    protected $name;
-
-    public function __construct(string $name) { }
-
-    public function getObjectName() { }
+interface ObjectsHandlerInterface
+{
+    /**
+     *
+     * @param array $objects
+     * @return array
+     */
+    public function handleObjects(array $objects): array;
 }
 
-class SomeObjectsHandler {
-    public function __construct() { }
+class SomeObject
+{
+    protected $name;
 
-    public function handleObjects(array $objects): array {
+    public function __construct(string $name)
+    {
+
+    }
+
+    public function getObjectName()
+    {
+
+    }
+}
+
+class SomeObjectsHandler implements ObjectsHandlerInterface
+{
+    public function __construct()
+    {
+
+    }
+
+    /**
+     *
+     * @param array $objects
+     * @return array
+     */
+    public function handleObjects(array $objects): array
+    {
         $handlers = [];
         foreach ($objects as $object) {
             if ($object->getObjectName() == 'object_1')
